@@ -1,0 +1,26 @@
+﻿@model Timetables.Web.Models.CreateFestivalViewModel
+
+@{
+    ViewData["Title"] = "Timetables.Web";
+}
+
+<div class="text-left">
+    
+    <div>
+        <h2>Add a Festival</h2>
+        <br />
+        
+        @using (Html.BeginRouteForm(RouteKeys.Festival.Create, new { }, FormMethod.Post, null, new { id = "create-festival-form" }))
+        {
+            @Html.LabelFor(o => o.FestivalName)
+            @Html.TextBoxFor(o => o.FestivalName)
+
+            <br />
+            <button type="submit">Submit</button>
+        }
+    </div>
+
+    <br />
+    <a href="@Url.RouteUrl(RouteKeys.Festival.All)">Back</a>
+
+</div>

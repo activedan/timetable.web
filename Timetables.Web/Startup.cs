@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Timetables.Web.Engine.Ioc;
 
 namespace Timetables.Web
 {
@@ -23,6 +24,8 @@ namespace Timetables.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.RegisterEngine(Configuration);
+
             services.AddControllersWithViews();
         }
 

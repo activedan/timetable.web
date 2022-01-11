@@ -1,8 +1,24 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model Timetables.Web.Models.HomeViewModel
+
+@{
+    ViewData["Title"] = "Timetables.Web";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-left">
+    <h1 class="display-4">Welcome to Timetables.Web</h1>
+    
+    <div>
+        <h2>There are currently @Model.Festivals.Count Festivals in the system</h2>
+        <br />
+
+        @foreach (var festival in Model.Festivals)
+        {
+            <span>@festival.Name</span> <a href="@Url.RouteUrl(RouteKeys.Festival.ById, new { id = festival.FestivalId })">View</a>
+            <br />
+        }
+
+        <br />
+        <a href="@Url.RouteUrl(RouteKeys.Festival.CreateForm)">Add</a>
+    </div>
+
 </div>

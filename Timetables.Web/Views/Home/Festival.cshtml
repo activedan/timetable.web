@@ -1,0 +1,17 @@
+﻿@model Timetables.Web.Models.FestivalViewModel
+
+@{
+    ViewData["Title"] = "Timetables.Web";
+}
+
+<div class="text-left">    
+    <div>
+        <h2>@Model.FestivalName</h2>
+        <br />
+        <span><strong>Festival Id: </strong> @Model.FestivalId</span>
+        
+        <br />
+        <a href="@Url.RouteUrl(RouteKeys.Festival.All)">Back</a>
+    </div>
+
+</div>
