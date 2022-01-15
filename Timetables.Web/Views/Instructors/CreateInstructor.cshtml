@@ -1,0 +1,30 @@
+﻿@model Timetables.Web.Models.CreateInstructorViewModel
+
+@{
+    ViewData["Title"] = "Timetables.Web";
+}
+
+<div class="text-left">
+    
+    <div>
+        <h2>Add an Instructor</h2>
+        <br />
+        
+        @using (Html.BeginRouteForm(RouteKeys.Instructors.Create, new { festivalId = Model.FestivalId }, FormMethod.Post, null, new { id = "create-instructor-form" }))
+        {
+            @Html.LabelFor(o => o.InstructorName)
+            @Html.TextBoxFor(o => o.InstructorName)
+            <br />
+            @Html.LabelFor(o => o.Subjects)
+            @Html.TextBoxFor(o => o.Subjects)
+            <span>Please separate subjects with commas</span>
+
+            <br />
+            <button type="submit">Submit</button>
+        }
+    </div>
+
+    <br />
+        <a href="@Url.RouteUrl(RouteKeys.Instructors.All, new { festivalId = Model.FestivalId })">Back</a>
+
+</div>

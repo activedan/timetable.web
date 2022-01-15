@@ -12,7 +12,7 @@ namespace Timetables.Web.Engine.Models
         public string Description { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-        public List<Instructors> Facilitators { get; set; }
+        public List<Instructor> Facilitators { get; set; }
         
         public int? Capacity { get; set; }
         public bool RequiresRegistration { get; set; }
