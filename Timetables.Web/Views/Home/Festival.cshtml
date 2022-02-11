@@ -10,7 +10,10 @@
         <br />
         <span><strong>Festival Id: </strong> @Model.FestivalId</span>
 
-        @*@{ Html.RenderPartial("~Views/Instructors/_AllInstructors", Model.FestivalId) }*@
+        <div>
+            @await Component.InvokeAsync("Instructors", Model.FestivalId)
+        </div>
+        
         <br />
         <span>View the instructors for this Festival <a href="@Url.RouteUrl(RouteKeys.Instructors.All, new { festivalId = Model.FestivalId})">here</a></span>
         
