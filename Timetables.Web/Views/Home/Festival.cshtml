@@ -10,7 +10,8 @@
         <br />
         <span><strong>Festival Id: </strong> @Model.FestivalId</span>
 
-        @*@{ Html.RenderPartial("~Views/Instructors/_AllInstructors", Model.FestivalId) }*@
+        @await Html.PartialAsync("../Instructors/_Instructors.cshtml", Model.Instructors)
+
         <br />
         <span>View the instructors for this Festival <a href="@Url.RouteUrl(RouteKeys.Instructors.All, new { festivalId = Model.FestivalId})">here</a></span>
         

@@ -1,0 +1,24 @@
+﻿@model Timetables.Web.Models.Instructors.InstructorsViewModel
+
+@{
+    ViewData["Title"] = "Timetables.Web";
+}
+
+<div class="text-left">
+    <h1 class="display-4">@Model.FestivalName - Instructors</h1>
+    
+    <div>
+        <h2>There are currently @Model.Instructors.Count Instructors attending this festival</h2>
+        <br />
+
+        @foreach (var instructor in Model.Instructors)
+        {
+            <span>@instructor.Name</span>
+            <br />
+        }
+
+        <br />
+        <a href="@Url.RouteUrl(RouteKeys.Instructors.CreateForm, new { festivalId = Model.FestivalId })">Add</a>
+    </div>
+
+</div>
