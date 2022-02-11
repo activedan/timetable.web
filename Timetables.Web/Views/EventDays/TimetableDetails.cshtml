@@ -1,0 +1,20 @@
+﻿@model Timetables.Web.Models.EventDays.TimetableDetailsViewModel
+
+@{
+    ViewData["Title"] = "Timetables.Web";
+}
+
+<div class="text-left">
+
+        <h2>@Model.TimetableName - Details</h2>
+        <div>
+            Description: @Model.TimetableDescription
+        </div>
+        <div>
+            Date: @Model.TimetableDate
+        </div>
+    <br />
+        <a href="@Url.RouteUrl(RouteKeys.EventDays.All, new { festivalId = Model.FestivalId})">Back to list of timetables</a>
+
+</div>
+

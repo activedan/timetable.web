@@ -1,0 +1,29 @@
+﻿@model Timetables.Web.Models.EventDays.CreateTimetableViewModel
+
+@{
+    ViewData["Title"] = "Timetables.Web";
+}
+
+<div class="text-left">
+    <div>
+        <h2>Add a Timetable</h2>
+        <br />
+
+        @using (Html.BeginRouteForm(RouteKeys.EventDays.Create, new {festivalId = Model.FestivalId}, FormMethod.Post, null, new { id = "create-timetable-form"}))
+        {
+            @Html.LabelFor(o => o.TimetableName)
+            @Html.TextBoxFor(o => o.TimetableName)
+            <br />
+            @Html.LabelFor(o => o.Description)
+            @Html.TextBoxFor(o => o.Description)
+            <br />
+            //@Html.DatePickerFor(o => o.TimetableDate, "autoclose=true", "todayBtn=true", "todayHighlight=true")
+            
+            <br />
+            <button type="submit">Submit</button>
+        }
+    </div>
+    <br />
+        <a href="@Url.RouteUrl(RouteKeys.EventDays.All, new { festivalId = Model.FestivalId})">Back</a>
+
+</div>

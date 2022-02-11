@@ -18,5 +18,12 @@
             public const string Create = "Instructor-CreatePost";
         }
 
+        public static class EventDays
+        {
+            public const string All = "Timetable-All";
+            public const string ById = "Timetable-ById";
+            public const string CreateForm = "Timetable-CreateForm";
+            public const string Create = "Timetable-CreatePost";
+        }
     }
 }

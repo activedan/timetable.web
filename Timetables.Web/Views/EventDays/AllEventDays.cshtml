@@ -1,0 +1,25 @@
+﻿@model Timetables.Web.Models.EventDaysViewModel
+
+@{
+    ViewData["Title"] = "Timetables.Web";
+
+}
+
+<div class="text-left">
+    <h1 class="display-4">@Model.FestivalName - Timetables</h1>
+
+    <div>
+        <h2>There are currently @Model.EventDays.Count Timetables available to view for this festival</h2>
+        <br />
+
+        @foreach (var timetable in Model.EventDays)
+        {
+            <span>@timetable.Name</span> @*<a href="@Url.RouteUrl(RouteKeys.EventDays.ById, new { festivalsId = Model.FestivalId, id = timetable.TimetableId })"View</a>*@
+            <br />
+        }
+
+        <br />
+        <a href="@Url.RouteUrl(RouteKeys.EventDays.CreateForm, new { festivalId = Model.FestivalId })">Add</a>
+    </div>
+
+</div>

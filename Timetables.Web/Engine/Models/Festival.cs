@@ -8,14 +8,14 @@ namespace Timetables.Web.Engine.Models
         public Guid FestivalId { get; set; }
         public string Name { get; set; }
         public List<Instructor> Instructors { get; set; }
-        public List<Timetable> EventDays { get; set; }
+        public List<EventDay> EventDays { get; set; }
 
         public Festival(string name)
         {
             FestivalId = Guid.NewGuid();
             Name = name;
             Instructors = new List<Instructor>();
-            EventDays = new List<Timetable>();
+            EventDays = new List<EventDay>();
         }
     }
 }
