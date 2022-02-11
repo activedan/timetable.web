@@ -65,7 +65,7 @@ namespace Timetables.Web.Controllers
 
             _festivalsService.SaveFestival(festival);
 
-            return RedirectToRoute(RouteKeys.Instructors.All, model.FestivalId);
+            return RedirectToRoute(RouteKeys.Festival.ById, new { id = model.FestivalId });
         }
 
 
