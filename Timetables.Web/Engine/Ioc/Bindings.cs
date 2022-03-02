@@ -10,7 +10,7 @@ namespace Timetables.Web.Engine.Ioc
         public static IServiceCollection RegisterEngine(this IServiceCollection services, IConfiguration config)
         {
 
-            services.AddSingleton<IFestivalsRepo, FestivalsRepo>();
+            services.AddSingleton<IFestivalsRepo, FestivalsFileRepo>();
 
             services.AddSingleton<IFestivalsService, FestivalsService>();
 

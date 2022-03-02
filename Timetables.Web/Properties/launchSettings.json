@@ -1,7 +1,11 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://timetables.dev",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:61073",
       "sslPort": 44384
@@ -18,10 +22,18 @@
     "Timetables.Web": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "https://localhost:5001;http://localhost:5000"
+    },
+    "IIS": {
+      "commandName": "IIS",
+      "launchUrl": "http://timetables.dev",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "ancmHostingModel": "OutOfProcess"
     }
   }
 }

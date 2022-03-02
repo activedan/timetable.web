@@ -35,7 +35,6 @@ namespace Timetables.Web.Controllers
         public IActionResult FestivalById(Guid id)
         {
             var festival = _festivalsService.GetFestival(id);
-
             var viewModel = new FestivalViewModel(festival);
 
             return View("Festival", viewModel);
