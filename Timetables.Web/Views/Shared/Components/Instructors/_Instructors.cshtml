@@ -1,0 +1,15 @@
+﻿
+
+<div>
+    <h2>There are currently @Model.Instructors.Count Instructors attending this festival</h2>
+    <br />
+
+    @foreach (var instructor in Model.Instructors)
+    {
+        <span>@instructor.Name</span>
+        <br />
+    }
+
+    <br />
+    <a href="@Url.RouteUrl(RouteKeys.Instructors.CreateForm, new { festivalId = Model.FestivalId })">Add</a>
+</div>

@@ -37,6 +37,11 @@ namespace Timetables.Web.Engine.Repos
 
         public void SaveFestival(Festival festival)
         {
+            if (_tempRepo.Any(x => x.FestivalId == festival.FestivalId))
+            {
+                _tempRepo.RemoveAll(x => x.FestivalId == festival.FestivalId);
+            }
+
             _tempRepo.Add(festival);
         }
     }
