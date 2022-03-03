@@ -19,6 +19,7 @@
                   <th scope="col">#</th>
                   <th scope="col">Festival Name</th>
                   <th scope="col">Description</th>
+                  <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,13 +27,19 @@
                 {
                     <tr>
                         <th scope="row">@(festival.i+1)</th> 
-                        <td><a href="@Url.RouteUrl(RouteKeys.Festival.ById, new { id = festival.value.FestivalId })">@festival.value.Name</a></td>
+                        <td><a href="@Url.RouteUrl(RouteKeys.Festival.ById, new { festivalId = festival.value.FestivalId })">@festival.value.Name</a></td>
                         <td></td>
+                        <td>
+                            <a href="@Url.RouteUrl(RouteKeys.Festival.Delete, new { festivalId = festival.value.FestivalId })">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
                     </tr>
                 }
                 <tr>
                     <th scope="row"></th>
                     <td><a href="@Url.RouteUrl(RouteKeys.Festival.CreateForm)">Add</a></td>
+                    <td></td>
                     <td></td>
                 </tr>
             </tbody>

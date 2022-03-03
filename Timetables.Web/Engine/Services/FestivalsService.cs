@@ -12,6 +12,7 @@ namespace Timetables.Web.Engine.Services
         List<Festival> GetAllFestivals();
 
         void SaveFestival(Festival festival);
+        void DeleteFestival(Guid festivalId);
     }
 
     public class FestivalsService : IFestivalsService
@@ -36,6 +37,11 @@ namespace Timetables.Web.Engine.Services
         public void SaveFestival(Festival festival)
         {
             _repo.SaveFestival(festival);
+        }
+
+        public void DeleteFestival(Guid festivalId)
+        {
+            _repo.DeleteFestival(festivalId);
         }
     }
 }

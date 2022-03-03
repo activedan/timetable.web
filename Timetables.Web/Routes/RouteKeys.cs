@@ -8,6 +8,7 @@
             public const string ById = "Festival-ById";
             public const string CreateForm = "Festival-CreateForm";
             public const string Create = "Festival-CreatePost";
+            public const string Delete = "Festival-Delete";
         }
 
         public static class Instructors

@@ -31,10 +31,10 @@ namespace Timetables.Web.Controllers
             return View(viewModel);
         }
 
-        [HttpGet, Route("festival/{id}", Name = RouteKeys.Festival.ById)]
-        public IActionResult FestivalById(Guid id)
+        [HttpGet, Route("festival/{festivalId}", Name = RouteKeys.Festival.ById)]
+        public IActionResult FestivalById(Guid festivalId)
         {
-            var festival = _festivalsService.GetFestival(id);
+            var festival = _festivalsService.GetFestival(festivalId);
             var viewModel = new FestivalViewModel(festival);
 
             return View("Festival", viewModel);
@@ -52,6 +52,14 @@ namespace Timetables.Web.Controllers
             var festival = new Festival(model.FestivalName);
 
             _festivalsService.SaveFestival(festival);
+
+            return RedirectToRoute(RouteKeys.Festival.All);
+        }
+
+        [HttpGet, Route("festival/{festivalId}/delete", Name = RouteKeys.Festival.Delete)]
+        public IActionResult DeleteFestival(Guid festivalId)
+        {
+            _festivalsService.DeleteFestival(festivalId);
 
             return RedirectToRoute(RouteKeys.Festival.All);
         }

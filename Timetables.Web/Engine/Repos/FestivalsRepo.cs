@@ -14,36 +14,7 @@ namespace Timetables.Web.Engine.Repos
         List<Festival> GetAllFestivals();
 
         void SaveFestival(Festival festival);
-    }
-
-    public class FestivalsRepo : IFestivalsRepo
-    {
-        private List<Festival> _tempRepo;
-
-        public FestivalsRepo()
-        {
-            _tempRepo = new List<Festival>();
-        }
-
-        public List<Festival> GetAllFestivals()
-        {
-            return _tempRepo;
-        }
-
-        public Festival GetFestival(Guid festivalId)
-        {
-            return _tempRepo.First(x => x.FestivalId == festivalId);
-        }
-
-        public void SaveFestival(Festival festival)
-        {
-            if (_tempRepo.Any(x => x.FestivalId == festival.FestivalId))
-            {
-                _tempRepo.RemoveAll(x => x.FestivalId == festival.FestivalId);
-            }
-
-            _tempRepo.Add(festival);
-        }
+        void DeleteFestival(Guid festivalId);
     }
 
     public class FestivalsFileRepo : IFestivalsRepo
@@ -86,6 +57,11 @@ namespace Timetables.Web.Engine.Repos
             WriteFile(festival);
         }
 
+        public void DeleteFestival(Guid festivalId)
+        {
+            DeleteFile(festivalId);
+        }
+
         private Festival ReadFile(string fileName)
         {
             var data = File.ReadAllText(Path.Combine(_directory, fileName));
@@ -106,6 +82,15 @@ namespace Timetables.Web.Engine.Repos
             }
         }
 
+        private void DeleteFile(Guid festivalId)
+        {
+            var fileName = FileNameHelper.BuildFestivalFileName(festivalId);
+            var fullFilePath = Path.Combine(_directory, fileName);
+
+            if (File.Exists(fullFilePath))
+                File.Delete(fullFilePath);
+        }
+
         private void Setup(string folderName)
         {
             _directory = Path.Combine(Directory.GetCurrentDirectory(), "FileStore", folderName);
@@ -113,5 +98,7 @@ namespace Timetables.Web.Engine.Repos
             if (!Directory.Exists(_directory))
                 Directory.CreateDirectory(_directory);
         }
+
+        
     }
 }
