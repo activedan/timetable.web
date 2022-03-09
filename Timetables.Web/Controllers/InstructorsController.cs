@@ -34,15 +34,15 @@ namespace Timetables.Web.Controllers
             return View("AllInstructors", viewModel);
         }
 
-        //[HttpGet, Route("{id}", Name = RouteKeys.Instructors.ById)]
-        //public IActionResult FestivalById(Guid id)
-        //{
-        //    var festival = _festivalsService.GetFestival(id);
+        [HttpGet, Route("{id}", Name = RouteKeys.Instructors.ById)]
+        public IActionResult FestivalById(Guid id)
+        {
+            var festival = _festivalsService.GetFestival(id);
 
-        //    var viewModel = new FestivalViewModel(festival);
+            var viewModel = new FestivalViewModel(festival);
 
-        //    return View("Festival", viewModel);
-        //}
+            return View("Festival", viewModel);
+        }
 
 
         [HttpGet, Route("create-instructor", Name = RouteKeys.Instructors.CreateForm)]
@@ -68,6 +68,14 @@ namespace Timetables.Web.Controllers
             return RedirectToRoute(RouteKeys.Festival.ById, new { festivalId = model.FestivalId });
         }
 
+        [HttpGet, Route("{instructorId}/delete", Name = RouteKeys.Instructors.Delete)]
+        public IActionResult RemoveInstructor(Guid festivalId, Guid instructorId)
+        {
+            _festivalsService.RemoveInstructor(festivalId, instructorId);
+
+            return RedirectToRoute(RouteKeys.Festival.ById, new { festivalId });
+
+        }
 
 
 
@@ -93,7 +101,5 @@ namespace Timetables.Web.Controllers
 
 
 
-
-        
-    }
+        }
 }

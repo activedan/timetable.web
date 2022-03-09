@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Timetables.Web.Engine.Repos;
 using Timetables.Web.Engine.Models;
 
+
 namespace Timetables.Web.Engine.Services
 {
 
@@ -13,6 +14,8 @@ namespace Timetables.Web.Engine.Services
 
         void SaveFestival(Festival festival);
         void DeleteFestival(Guid festivalId);
+
+        void RemoveInstructor(Guid festivalId, Guid instructorId);
     }
 
     public class FestivalsService : IFestivalsService
@@ -42,6 +45,15 @@ namespace Timetables.Web.Engine.Services
         public void DeleteFestival(Guid festivalId)
         {
             _repo.DeleteFestival(festivalId);
+        }
+
+        public void RemoveInstructor(Guid festivalId, Guid instructorId)
+        {
+            var festival = _repo.GetFestival(festivalId);
+            
+            festival.Instructors.RemoveAll(x => x.InstructorId == instructorId);
+           
+            _repo.SaveFestival(festival);
         }
     }
 }

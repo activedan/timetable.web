@@ -1,15 +1,39 @@
-﻿
+﻿@model Timetables.Web.Models.Instructors.InstructorsViewModel
 
 <div>
     <h2>There are currently @Model.Instructors.Count Instructors attending this festival</h2>
-    <br />
-
-    @foreach (var instructor in Model.Instructors)
-    {
-        <span>@instructor.Name</span>
-        <br />
-    }
-
-    <br />
-    <a href="@Url.RouteUrl(RouteKeys.Instructors.CreateForm, new { festivalId = Model.FestivalId })">Add</a>
+    
+    <div class="bd-example">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Instructor Name</th>
+                    <th scope="col">Subjects</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var instructor in Model.Instructors.Select((value, i) => new { i, value }))
+                {
+                    <tr>
+                        <th scope="row">@(instructor.i+1)</th> 
+                        <td><a href="@Url.RouteUrl(RouteKeys.Instructors.ById, new { festivalId = Model.FestivalId })">@instructor.value.Name</a></td>
+                        <td></td>
+                        <td>
+                            <a href="@Url.RouteUrl(RouteKeys.Instructors.Delete, new { festivalId = Model.FestivalId,  instructor.value.InstructorId })">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <th scope="row"></th>
+                    <td><a href="@Url.RouteUrl(RouteKeys.Instructors.CreateForm, new { festivalId = Model.FestivalId})">Add</a></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+   
 </div>

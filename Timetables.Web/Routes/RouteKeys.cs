@@ -17,6 +17,7 @@
             public const string ById = "Instructor-ById";
             public const string CreateForm = "Instructor-CreateForm";
             public const string Create = "Instructor-CreatePost";
+            public const string Delete = "Instructor-Delete";
         }
 
         public static class EventDays
